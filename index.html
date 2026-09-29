@@ -30,3 +30,5 @@ els.grid.onclick=async e=>{const claim=e.target.dataset.claim,release=e.target.d
 $('#claimForm').addEventListener('submit',async e=>{if(e.submitter?.value==='cancel')return;e.preventDefault();const claimant=els.name.value.trim(),character=els.selected.value;if(!claimant)return;$('#claimError').textContent='';const old=localStorage.shrekMyCharacter;if(old&&old!==character)await supabase.rpc('release_shrek_character',{p_group_slug:CONFIG.groupSlug,p_character:old,p_claim_token:claimToken});const {data,error}=await supabase.rpc('claim_shrek_character',{p_group_slug:CONFIG.groupSlug,p_character:character,p_claimant:claimant,p_claim_token:claimToken});if(error||!data){$('#claimError').textContent=error?.message||'Someone just beat you to it. Pick another!';await load();return}localStorage.shrekName=claimant;localStorage.shrekMyCharacter=character;els.claim.close();els.search.value='';await load()});
 init();
 </script></body></html>
+
+<!-- connector-write-test -->
