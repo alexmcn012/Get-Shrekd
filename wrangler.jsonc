@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "get-shrekd",
+  "compatibility_date": "2026-09-29",
+  "preview_urls": true,
+  "assets": {
+    "directory": "."
+  },
+  "previews": {}
+}
